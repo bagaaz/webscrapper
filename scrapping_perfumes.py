@@ -19,8 +19,6 @@ def escape_quotes(data):
     else:
         return data.replace('"', '""')
 
-
-
 perfumes_links = get_perfume_links_from_txt("colunas_selecionadas.txt")
 
 def main():
