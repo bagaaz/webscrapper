@@ -1,10 +1,12 @@
 from lxml import html
 import requests, sys
 
-BRANDS_LIMIT = 1
+marcas = []  # List of brands already in manifest
+
+BRANDS_LIMIT = 10000
 PERFUMES_LIMIT = 20  # Max of 20 items on a page
-LETTERS_LIMIT = 27  # Max of 27 name categories
-PAGES_LIMIT = 1
+LETTERS_LIMIT = 100  # Max of 27 name categories
+PAGES_LIMIT = 100
 LETTERS = [
     "a",
     "b",
@@ -33,6 +35,16 @@ LETTERS = [
     "y",
     "z",
     "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "#"
 ]
 
 
@@ -64,7 +76,9 @@ def main():
             brand_urls = tree1.xpath(f"//div[@id='letter_{letter}']/div/a")
             for brand_url in brand_urls[:BRANDS_LIMIT]:
                 brand_url = brand_url.get("href")
-                print("Brand:", brand_url[33:], "\n")
+                if brand_url[33:] in marcas:
+                    continue
+                print("\033[33m" + "Brand:", brand_url[33:],"\033[0m" + "\n")
 
                 # Checking each page of brand to see all perfumes (limited to 20 per page)
                 for page_number in range(1, PAGES_LIMIT + 1):
@@ -85,31 +99,33 @@ def main():
                     if len(perfume_urls) == 0:
                         break
 
-                    print(f"Page: {page_number}")
+                    print(f"\033[32m Page: {page_number} \033[0m")
                     for perfume_url in perfume_urls[:PERFUMES_LIMIT]:
-                        url = perfume_url.get("href")
+                        try:
+                            url = perfume_url.get("href")
 
-                        # Query parfumo.com for the current fragrance
-                        perfume_page = requests.get(url, headers=headers)
-                        tree3 = html.fromstring(perfume_page.content)
-                        name = tree3.xpath(f"//h1")[0].text.strip()
+                            # Query parfumo.com for the current fragrance
+                            perfume_page = requests.get(url, headers=headers)
+                            tree3 = html.fromstring(perfume_page.content)
+                            name = tree3.xpath(f"//h1")[0].text.strip()
 
-                        # Select more information from page
-                        # Missing details are padded out with ""
-                        details = tree3.xpath(
-                            f"//span[contains(@itemprop, 'brand')]/span/a/span/text()"
-                        )
-                        brand, year, *_ = details + ["", "", ""]
-                        concentration, *_ = tree3.xpath(
-                            f"//span[contains(@itemprop, 'brand')]/span/span/text()"
-                        ) + ["", ""]
-                        # Save information to csv
-                        entry = ascii(
-                            f'"{name}","{brand}",{year},"{concentration.rstrip()}","{url}"'
-                        )[1:-1]
-                        print(entry)
-                        f.write(entry + "\n")
-
+                            # Select more information from page
+                            # Missing details are padded out with ""
+                            details = tree3.xpath(
+                                f"//span[contains(@itemprop, 'brand')]/span/a/span/text()"
+                            )
+                            brand, year, *_ = details + ["", "", ""]
+                            concentration, *_ = tree3.xpath(
+                                f"//span[contains(@itemprop, 'brand')]/span/span/text()"
+                            ) + ["", ""]
+                            # Save information to csv
+                            entry = ascii(
+                                f'"{name}","{brand}",{year},"{concentration.rstrip()}","{url}"'
+                            )[1:-1]
+                            print(entry)
+                            f.write(entry + "\n")
+                        except AttributeError:
+                            print("\033[31m" + "Error: " + url + "\033[0m")
 
 if __name__ == "__main__":
     main()
