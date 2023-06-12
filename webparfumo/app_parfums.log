@@ -1,0 +1,50 @@
+root - ERROR - Error occurred while processing brand: Cité with link: https://www.parfumo.com/Perfumes/cité?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 66, in connectPerfumePageListId
+    PerfumesTags = tree.xpath('//div[@class="pgrid mb-1"]')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Hoermanseder with link: https://www.parfumo.com/Perfumes/hoermanseder?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 66, in connectPerfumePageListId
+    PerfumesTags = tree.xpath('//div[@class="pgrid mb-1"]')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Mäurer & Wirtz with link: https://www.parfumo.com/Perfumes/Maeurer_Wirtz?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 69, in connectPerfumePageListId
+    perfumeName =  perfumeTag.xpath('.//div[@class="name"]/a/text()')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Note 33 with link: https://www.parfumo.com/Perfumes/Note_33?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 69, in connectPerfumePageListId
+    perfumeName =  perfumeTag.xpath('.//div[@class="name"]/a/text()')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Puig with link: https://www.parfumo.com/Perfumes/Puig?current_page=2&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 69, in connectPerfumePageListId
+    perfumeName =  perfumeTag.xpath('.//div[@class="name"]/a/text()')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Shishl with link: https://www.parfumo.com/Perfumes/shishl?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 66, in connectPerfumePageListId
+    PerfumesTags = tree.xpath('//div[@class="pgrid mb-1"]')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: top2base with link: https://www.parfumo.com/Perfumes/top2base?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 69, in connectPerfumePageListId
+    perfumeName =  perfumeTag.xpath('.//div[@class="name"]/a/text()')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Ultima II with link: https://www.parfumo.com/Perfumes/Ultima_II?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 69, in connectPerfumePageListId
+    perfumeName =  perfumeTag.xpath('.//div[@class="name"]/a/text()')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Valeria Mazza with link: https://www.parfumo.com/Perfumes/Valeria_Mazza?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 69, in connectPerfumePageListId
+    perfumeName =  perfumeTag.xpath('.//div[@class="name"]/a/text()')[0]
+IndexError: list index out of range
+root - ERROR - Error occurred while processing brand: Vegueros with link: https://www.parfumo.com/Perfumes/Vegueros?current_page=1&.
+Traceback (most recent call last):
+  File "/home/gabriel/projetos/parfumo-scraper/webparfumo/app/controller/perfumes.py", line 66, in connectPerfumePageListId
+    PerfumesTags = tree.xpath('//div[@class="pgrid mb-1"]')[0]
+IndexError: list index out of range
